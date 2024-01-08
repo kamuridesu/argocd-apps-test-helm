@@ -16,8 +16,7 @@ spec:
       nodeSelector: all()
     containerIPForwarding: "Enabled"  # https://docs.k3s.io/installation/network-options#custom-cni
     nodeAddressAutodetectionV4:
-      interface: eth.*
-      skipInterface: eth0
+      interface: eth1
 
 ---
 
