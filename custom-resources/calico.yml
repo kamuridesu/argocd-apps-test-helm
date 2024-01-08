@@ -15,8 +15,6 @@ spec:
       natOutgoing: Enabled
       nodeSelector: all()
     containerIPForwarding: "Enabled"  # https://docs.k3s.io/installation/network-options#custom-cni
-    nodeAddressAutodetectionV4:
-      interface: eth1
 
 ---
 
