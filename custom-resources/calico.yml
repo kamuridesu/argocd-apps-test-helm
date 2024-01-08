@@ -14,7 +14,10 @@ spec:
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
       nodeSelector: all()
-    containerIPForwarding: "Enabled"
+    containerIPForwarding: "Enabled"  # https://docs.k3s.io/installation/network-options#custom-cni
+    nodeAddressAutodetectionV4:
+      interface: eth.*
+      skipInterface: eth0
 
 ---
 

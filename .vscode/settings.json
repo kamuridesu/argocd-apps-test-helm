@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "kubernetes://schema/argoproj.io/v1alpha1@application": "file:///home/kamuri/Documentos/workspace/personal/argocd-apps-test-helm/apps/default.yml"
-    }
-}
