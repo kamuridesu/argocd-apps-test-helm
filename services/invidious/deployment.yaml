@@ -17,7 +17,7 @@ spec:
         image: quay.io/invidious/invidious:latest-arm64
         envFrom:
         - secretRef:
-          name: invidious-secret
+            name: invidious-secret
         resources:
           limits:
             memory: "300m"
