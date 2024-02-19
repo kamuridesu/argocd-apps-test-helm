@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: invidious
-  namespace: invidious
+  namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: invidious
+    namespace: argocd
   project: default
   source:
     repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
