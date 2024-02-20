@@ -6,4 +6,4 @@ spec:
   selector:
     app: invidious
   ports:
-  - port: 8080
+  - port: 3000
