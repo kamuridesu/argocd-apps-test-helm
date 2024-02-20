@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: argocd-gateway
+  name: argo-gateway
   namespace: argocd
 spec:
   selector:
