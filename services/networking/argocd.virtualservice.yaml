@@ -14,8 +14,7 @@ spec:
             prefix: /
       route:
         - destination:
-            host: >-
-              argo-cd-argocd-server.argocd.svc.cluster.local
+            host: argo-cd-argocd-server.argocd.svc.cluster.local
             port:
-              number: 443
+              number: 80
           weight: 100
