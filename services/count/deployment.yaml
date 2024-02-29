@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moe-count
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: moe-count
+  template:
+    metadata:
+      labels:
+        app: moe-count
+    spec:
+      containers:
+      - name: moe-count
+        image: kamuri/moe-count-go:0.0.2
+        command: ["-dbname=postgres", "-dbuser=postgres", "-dbpassword=password","-dbhost=10.0.0.208", "-dbport=5432"]
+        envFrom:
+        - secretRef:
+            name: moe-count
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 2
+        resources:
+          limits:
+            cpu: "0.1"
+            memory: "50m"

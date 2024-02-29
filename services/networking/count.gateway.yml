@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: count-gateway
+  namespace: count
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+  - hosts:
+    - count.kamuridesu.com
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
