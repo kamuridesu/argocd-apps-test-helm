@@ -15,7 +15,7 @@ spec:
       containers:
       - name: moe-count
         image: kamuri/moe-count-go:0.0.2
-        command: ["-dbname=postgres", "-dbuser=postgres", "-dbpassword=password","-dbhost=10.0.0.208", "-dbport=5432"]
+        command: ["/app/moe-count", "-dbname=postgres", "-dbuser=postgres", "-dbpassword=password","-dbhost=10.0.0.208", "-dbport=5432"]
         ports:
         - containerPort: 8080
         livenessProbe:
