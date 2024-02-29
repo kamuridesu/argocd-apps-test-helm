@@ -7,7 +7,7 @@ spec:
   gateways:
     - count/count-gateway
   hosts:
-    - inv.kamuridesu.com
+    - count.kamuridesu.com
   http:
     - match:
         - uri:
