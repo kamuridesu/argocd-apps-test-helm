@@ -16,7 +16,7 @@ spec:
         - name: drop-type
           image: kamuri/invidious-db-sidecar:0.0.1
           envFrom:
-            - secretRef:
+          - secretRef:
               name: invidious-secret
       containers:
       - name: invidious
