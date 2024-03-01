@@ -16,5 +16,5 @@ spec:
         - destination:
             host: argo-cd-argocd-server.argocd.svc.cluster.local
             port:
-              number: 8080
+              number: 443
           weight: 100
