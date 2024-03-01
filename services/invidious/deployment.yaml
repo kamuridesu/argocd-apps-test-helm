@@ -16,8 +16,8 @@ spec:
         - name: drop-type
           image: kamuri/invidious-db-sidecar:0.0.1
           envFrom:
-          - secretRef:
-            name: invidious-secret
+            - secretRef:
+              name: invidious-secret
       containers:
       - name: invidious
         image: quay.io/invidious/invidious:2024.01.29-c005ada-arm64
