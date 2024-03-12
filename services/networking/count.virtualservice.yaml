@@ -15,7 +15,7 @@ spec:
       route:
         - destination:
             host: >-
-              count-service.count.svc.cluster.local
+              moe-count-service.count.svc.cluster.local
             port:
               number: 8080
           weight: 100
