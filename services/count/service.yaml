@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: count-service
+  name: moe-count-service
 spec:
   selector:
-    app: count
+    app: moe-count
   ports:
   - port: 8080
