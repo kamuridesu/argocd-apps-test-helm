@@ -18,7 +18,7 @@ spec:
             claimName: trilium-pvc
       containers:
       - name: moe-count
-        image: zadam/trilium:0.63
+        image: zadam/trilium:0.63.3
         volumeMounts:
           - mountPath: /home/node/trilium-data
             name: trilium-data
