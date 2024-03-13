@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moe-count
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moe-count
+  template:
+    metadata:
+      labels:
+        app: moe-count
+    spec:
+      volumes:
+        - name: trilium-data
+          persistentVolumeClaim:
+            claimName: trilium-pvc
+      containers:
+      - name: moe-count
+        image: zadam/trilium:0.63
+        volumeMounts:
+          - mountPath: /home/node/trilium-data
+            name: trilium-data
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /api/health-check
+            port: 8080
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 2
+        # resources:
+        #   limits:
+        #     cpu: "0.1"
+        #     memory: "500m"
