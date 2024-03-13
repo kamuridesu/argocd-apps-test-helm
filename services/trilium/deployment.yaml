@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: moe-count
+  name: trilium
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: moe-count
+      app: trilium
   template:
     metadata:
       labels:
-        app: moe-count
+        app: trilium
     spec:
       volumes:
         - name: trilium-data
           persistentVolumeClaim:
             claimName: trilium-pvc
       containers:
-      - name: moe-count
+      - name: trilium
         image: zadam/trilium:0.63.3
         volumeMounts:
           - mountPath: /home/node/trilium-data
