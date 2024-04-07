@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: api-gateway
+  namespace: api-default
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+  - hosts:
+    - api.kamuridesu.com
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
