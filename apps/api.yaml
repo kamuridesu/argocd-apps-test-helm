@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: api-default
+  project: default
+  source:
+    repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
+    path: services/api/apps
+    targetRevision: HEAD
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        "istio-injection": enabled
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

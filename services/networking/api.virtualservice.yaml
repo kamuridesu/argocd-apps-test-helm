@@ -8,3 +8,14 @@ spec:
     - api-default/api-gateway
   hosts:
     - api.kamuridesu.com
+  http:
+    - match:
+        - uri:
+            prefix: /api/ocr
+      route:
+        - destination:
+            host: ocr-exposer.api-default.svc.cluster.local
+            port:
+              number: 2222
+          weight: 100
+

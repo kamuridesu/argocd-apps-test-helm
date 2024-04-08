@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocr-exposer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocr-exposer
+  template:
+    metadata:
+      labels:
+        app: ocr-exposer
+    spec:
+      containers:
+      - name: ocr-exposer
+        image: kamuri/easyocr-api-remote:0.0.1
+        envFrom:
+        - secretRef:
+            name: api-ocr-secret
+        ports:
+        - containerPort: 2222
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 2
+        # resources:
+        #   limits:
+        #     cpu: "0.1"
+        #     memory: "500m"
