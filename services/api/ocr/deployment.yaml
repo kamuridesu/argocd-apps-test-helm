@@ -22,7 +22,7 @@ spec:
         - containerPort: 2222
         livenessProbe:
           httpGet:
-            path: /health
+            path: /api/ocr/health
             port: 8080
             httpHeaders:
               - name: Host
