@@ -14,7 +14,7 @@ spec:
             prefix: /api/ocr
       route:
         - destination:
-            host: ocr-exposer.api-default.svc.cluster.local
+            host: ocr-exposer-service.api-default.svc.cluster.local
             port:
               number: 2222
           weight: 100
