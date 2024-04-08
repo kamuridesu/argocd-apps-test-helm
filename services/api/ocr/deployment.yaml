@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ocr-exposer
-        image: kamuri/easyocr-api-remote:0.0.6
+        image: kamuri/easyocr-api-remote:0.0.7
         envFrom:
         - secretRef:
             name: api-ocr-secret
