@@ -33,7 +33,7 @@ spec:
           failureThreshold: 10
         resources:
           limits:
-            memory: 300m
+            memory: 400m
             cpu: '0.01'
           requests:
             memory: 160m
