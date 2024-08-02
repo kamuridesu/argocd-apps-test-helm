@@ -17,5 +17,5 @@ spec:
             host: >-
               keycloak-service.keycloak.svc.cluster.local
             port:
-              number: 9000
+              number: 8080
           weight: 100
