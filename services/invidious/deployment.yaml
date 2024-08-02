@@ -32,9 +32,9 @@ spec:
           timeoutSeconds: 5
           failureThreshold: 10
         resources:
-          # limits:
-          #   memory: 200m
-          #   cpu: '0.01'
+          limits:
+            memory: 200Mi
+            cpu: '0.01'
           requests:
-            memory: 160m
+            memory: 160Mi
             cpu: '0.005'
