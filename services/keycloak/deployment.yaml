@@ -20,7 +20,7 @@ spec:
         args: ["start", "--cache-stack=kubernetes", "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true"]
         envFrom:
           - secretRef:
-            name: keycloak-secret
+              name: keycloak-secret
         ports:
         - name: http
           containerPort: 8080
