@@ -24,6 +24,10 @@ spec:
             httpHeaders:
               - name: Host
                 value: 127.0.0.1
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 2
         readinessProbe:
           httpGet:
             path: /health/ready
@@ -31,6 +35,10 @@ spec:
             httpHeaders:
               - name: Host
                 value: 127.0.0.1
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 2
         args: ["start", "--cache-stack=kubernetes", "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true", "--hostname=keycloak.kamuridesu.com"]
         envFrom:
           - secretRef:
