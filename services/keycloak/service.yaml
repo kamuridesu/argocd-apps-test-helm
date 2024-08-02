@@ -9,6 +9,6 @@ spec:
   - name: http
     port: 8080
   - name: https
-    port: 9000
+    port: 8443
   - name: jgroups
     port: 7600
