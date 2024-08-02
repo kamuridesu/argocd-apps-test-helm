@@ -35,6 +35,17 @@ spec:
           periodSeconds: 30
           timeoutSeconds: 5
           failureThreshold: 2
+        readinessProbe:
+          httpGet:
+            path: /api/health-check
+            port: 8080
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 2
         resources:
           limits:
             memory: 400Mi

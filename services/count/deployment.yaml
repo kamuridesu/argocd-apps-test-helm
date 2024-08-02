@@ -27,11 +27,18 @@ spec:
             httpHeaders:
               - name: Host
                 value: 127.0.0.1
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
           initialDelaySeconds: 30
           periodSeconds: 30
           timeoutSeconds: 5
           failureThreshold: 2
         resources:
           limits:
-            cpu: "0.005"
+            cpu: "0.015"
             memory: "80Mi"
