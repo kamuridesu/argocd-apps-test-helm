@@ -17,6 +17,20 @@ spec:
       containers:
       - name: keycloak
         image: quay.io/keycloak/keycloak:25.0.2-0
+        livenessProbe:
+          httpGet:
+            path: /health/ready
+            port: 9000
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 9000
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
         args: ["start", "--cache-stack=kubernetes", "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true", "--hostname=keycloak.kamuridesu.com"]
         envFrom:
           - secretRef:
