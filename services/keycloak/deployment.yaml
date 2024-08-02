@@ -25,7 +25,7 @@ spec:
         - name: http
           containerPort: 8080
         - name: https
-          containerPort: 8443
+          containerPort: 9000
         - name: jgroups
           containerPort: 7600
         resources:
