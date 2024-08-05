@@ -50,6 +50,8 @@ spec:
           containerPort: 8443
         - name: jgroups
           containerPort: 7600
+        - name: management
+          containerPort: 9000
         resources:
           limits:
             memory: 1G

@@ -12,3 +12,5 @@ spec:
     port: 8443
   - name: jgroups
     port: 7600
+  - name: management
+    port: 9000
