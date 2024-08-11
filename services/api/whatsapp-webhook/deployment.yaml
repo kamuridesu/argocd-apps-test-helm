@@ -22,7 +22,7 @@ spec:
         - containerPort: 8000
         livenessProbe:
           httpGet:
-            path: /api/health
+            path: /api/whatsapp-webhook/health
             port: 8000
             httpHeaders:
               - name: Host
