@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: whatsapp-webhook
-        image: kamuri/test-wb-webhook:0.0.12
+        image: kamuri/test-wb-webhook:0.0.13
         envFrom:
         - secretRef:
             name: api-whatsapp-webhook-secret
