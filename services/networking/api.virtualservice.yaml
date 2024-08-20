@@ -27,4 +27,12 @@ spec:
             port:
               number: 8000
           weight: 100
-
+    - match:
+        - uri:
+            prefix: /api/guesser
+      route:
+        - destination:
+            host: deepdanbooryu-service.api-default.svc.cluster.local
+            port:
+              number: 8080
+          weight: 100
