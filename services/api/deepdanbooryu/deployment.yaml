@@ -15,6 +15,7 @@ spec:
       containers:
       - name: deepdanbooryu
         image: kamuri/deepdanbooryu:0.0.5
+        args: ["server"]
         envFrom:
         - secretRef:
             name: api-deepdanbooryu-secret
