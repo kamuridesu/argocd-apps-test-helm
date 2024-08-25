@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: invidious
-        image: quay.io/invidious/invidious:2024.08.13-e319c35-arm64
+        image: quay.io/invidious/invidious:2024.08.24-c5fdd9e-arm64
         envFrom:
         - secretRef:
             name: invidious-secret
