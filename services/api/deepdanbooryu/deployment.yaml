@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: deepdanbooryu
-        image: kamuri/waifu_guesser:0.0.2
+        image: kamuri/waifu_guesser:0.0.3
         args: ["server"]
         envFrom:
         - secretRef:
