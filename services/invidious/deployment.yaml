@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: invidious
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: invidious
@@ -29,7 +28,8 @@ spec:
           - --tcp
           - 0.0.0.0:12999
         env:
-          - RUST_LOG=info
+          - name: RUST_LOG
+            value: info
         securityContext:
           capabilities:
             drop:
