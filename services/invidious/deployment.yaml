@@ -35,7 +35,6 @@ spec:
             drop:
               - ALL
           allowPrivilegeEscalation: false
-          runAsNonRoot: true
         resources:
           limits:
             memory: 200Mi
