@@ -13,6 +13,37 @@ spec:
         app: invidious
     spec:
       containers:
+      - name: youtube-trusted-session-generator
+        image: quay.io/invidious/youtube-trusted-session-generator@sha256:a2a72f8330b1aac8a6b1ee0f0e38f2d23dc37b8fde2b6c5b35127cb8d1888c6a
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: '0.1'
+          requests:
+            memory: 512Mi
+            cpu: '0.05'
+
+      - name: inv_sig_helper
+        image: quay.io/invidious/inv-sig-helper:master-215d32c
+        args:
+          - --tcp
+          - 0.0.0.0:12999
+        env:
+          - RUST_LOG=info
+        securityContext:
+          capabilities:
+            drop:
+              - ALL
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: '0.1'
+          requests:
+            memory: 100Mi
+            cpu: '0.05'
+
       - name: invidious
         image: quay.io/invidious/invidious:2.20240825.2-arm64
         envFrom:
