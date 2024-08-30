@@ -16,10 +16,10 @@ spec:
         image: quay.io/invidious/youtube-trusted-session-generator@sha256:a2a72f8330b1aac8a6b1ee0f0e38f2d23dc37b8fde2b6c5b35127cb8d1888c6a
         resources:
           limits:
-            memory: 1Gi
-            cpu: '0.5'
+            memory: 2Gi
+            cpu: '0.7'
           requests:
-            memory: 512Mi
+            memory: 1024Mi
             cpu: '0.05'
 
       - name: inv-sig-helper
