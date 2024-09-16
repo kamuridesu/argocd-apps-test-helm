@@ -22,10 +22,7 @@ spec:
             - secretRef:
                 name: keycloak-secret
           ports:
-            - containerPort: 8080
-              name: http
-            - containerPort: 8443
-              name: https
+          - containerPort: 8080
           readinessProbe:
             httpGet:
               path: /auth
