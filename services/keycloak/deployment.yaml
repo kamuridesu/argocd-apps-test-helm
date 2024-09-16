@@ -17,6 +17,7 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:25.0.5-0
+          args: ["start"]
           envFrom:
             - secretRef:
                 name: keycloak-secret
