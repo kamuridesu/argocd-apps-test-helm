@@ -9,6 +9,9 @@ spec:
     - port: 80
       targetPort: 8080
       protocol: TCP
+    - port: 443
+      targetPort: 8443
+      protocol: TCP
   selector:
     app: keycloak
   type: ClusterIP
