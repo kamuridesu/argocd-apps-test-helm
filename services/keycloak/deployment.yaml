@@ -33,6 +33,6 @@ spec:
             initialDelaySeconds: 30
             timeoutSeconds: 5
           resources:
-          limits:
-            memory: 1G
-            cpu: '0.5'
+            limits:
+              memory: 1G
+              cpu: '0.5'
