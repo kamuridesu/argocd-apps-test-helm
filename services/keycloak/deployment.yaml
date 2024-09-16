@@ -17,7 +17,7 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:25.0.2-0
-          args: ["start", "--cache-stack=kubernete", "--hostname=keycloak.kamuridesu.com"]
+          args: ["start", "--cache-stack=kubernetes", "--hostname=keycloak.kamuridesu.com"]
           envFrom:
             - secretRef:
                 name: keycloak-secret
