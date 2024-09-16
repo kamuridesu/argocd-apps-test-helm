@@ -11,5 +11,5 @@ spec:
     - keycloak.kamuridesu.com
     port:
       name: http
-      number: 443
+      number: 80
       protocol: HTTP
