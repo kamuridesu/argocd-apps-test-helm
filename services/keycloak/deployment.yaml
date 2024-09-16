@@ -25,9 +25,9 @@ spec:
           - containerPort: 8080
           readinessProbe:
             httpGet:
-              path: /auth
+              path: /
               port: 8080
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             timeoutSeconds: 5
           resources:
             limits:
