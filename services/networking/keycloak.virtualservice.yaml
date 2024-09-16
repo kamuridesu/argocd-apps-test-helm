@@ -7,7 +7,7 @@ spec:
   gateways:
     - keycloak/keycloak-gateway
   hosts:
-    - notes.kamuridesu.com
+    - keycloak.kamuridesu.com
   http:
     - match:
         - uri:
