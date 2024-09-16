@@ -15,44 +15,21 @@ spec:
         app: keycloak
     spec:
       containers:
-      - name: keycloak
-        image: quay.io/keycloak/keycloak:25.0.2-0
-        # livenessProbe:
-        #   httpGet:
-        #     path: /health/ready
-        #     port: 8080
-        #     httpHeaders:
-        #       - name: Host
-        #         value: 127.0.0.1
-        #   initialDelaySeconds: 120
-        #   periodSeconds: 30
-        #   timeoutSeconds: 5
-        #   failureThreshold: 2
-        # readinessProbe:
-        #   httpGet:
-        #     path: /health/ready
-        #     port: 8080
-        #     httpHeaders:
-        #       - name: Host
-        #         value: 127.0.0.1
-          # initialDelaySeconds: 120
-          # periodSeconds: 30
-          # timeoutSeconds: 5
-          # failureThreshold: 2
-        args: ["start", "--cache-stack=kubernetes", "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true", "--hostname=keycloak.kamuridesu.com"]
-        envFrom:
-          - secretRef:
-              name: keycloak-secret
-        ports:
-        - name: http
-          containerPort: 8080
-        - name: https
-          containerPort: 8443
-        - name: jgroups
-          containerPort: 7600
-        - name: management
-          containerPort: 9000
-        resources:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:25.0.5-0
+          envFrom:
+            - secretRef:
+                name: keycloak-secret
+          ports:
+            - containerPort: 8080
+              name: http
+          readinessProbe:
+            httpGet:
+              path: /auth
+              port: 8080
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          resources:
           limits:
             memory: 1G
             cpu: '0.5'
