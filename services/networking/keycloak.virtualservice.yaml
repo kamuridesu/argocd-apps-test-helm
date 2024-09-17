@@ -12,13 +12,14 @@ spec:
     - match:
         - uri:
             prefix: /
-      route:
+      http:
+      - route:
         - destination:
-            host: >-
-              keycloak-service.keycloak.svc.cluster.local
+            host: keycloak-service.keycloak.svc.cluster.local
             port:
               number: 8080
-          weight: 100
-      appendHeaders:
-        "x-forwarded-proto": "https"
-
+        headers:
+          request:
+            set:
+              x-forwarded-proto: https
+              x-forwarded-port: "443"
