@@ -17,7 +17,7 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:25.0.2-0
-          args: ["start", "--hostname=keycloak.kamuridesu.com", "--proxy-headers", "xforwarded", "--hostname-strict=false"]
+          args: ["start", "--hostname=keycloak.kamuridesu.com", "--proxy-headers=xforwarded", "--hostname-strict=false"]
           envFrom:
             - secretRef:
                 name: keycloak-secret
