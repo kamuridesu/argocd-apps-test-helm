@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: count-ingress
+  namespace: count
+spec:
+  rules:
+  - host: count.kamuridesu.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: moe-count-service
+            port: 
+              number: 8080

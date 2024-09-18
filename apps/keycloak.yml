@@ -15,9 +15,6 @@ spec:
     path: services/keycloak
     targetRevision: HEAD
   syncPolicy:
-    managedNamespaceMetadata:
-      labels:
-        "istio-injection": enabled
     syncOptions:
       - CreateNamespace=true
     automated:

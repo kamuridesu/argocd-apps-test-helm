@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: trilium
+  name: argo-cd
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: trilium
+    namespace: haproxy
   project: default
   source:
     repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
-    path: services/trilium
+    path: charts/haproxy
     targetRevision: HEAD
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+        - CreateNamespace=true
