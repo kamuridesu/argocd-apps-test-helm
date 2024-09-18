@@ -2,8 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: trilium-ingress
-  labels:
-    name: trilium-ingress
+  namespace: trilium
 spec:
   rules:
   - host: notes.kamuridesu.com
