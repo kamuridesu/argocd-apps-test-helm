@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: keycloak-ingress
   namespace: keycloak
-  ingress.kubernetes.io/config-backend: |
-      http-request set-header X-Forwarded-Proto https
 spec:
   ingressClassName: haproxy
   rules:
