@@ -4,6 +4,7 @@ metadata:
   name: invidious-ingress
   namespace: invidious
 spec:
+  ingressClassName: haproxy
   rules:
   - host: inv.kamuridesu.com
     http:

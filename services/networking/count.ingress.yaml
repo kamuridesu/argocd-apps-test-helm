@@ -4,6 +4,7 @@ metadata:
   name: count-ingress
   namespace: count
 spec:
+  ingressClassName: haproxy
   rules:
   - host: count.kamuridesu.com
     http:

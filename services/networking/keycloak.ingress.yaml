@@ -6,6 +6,7 @@ metadata:
   ingress.kubernetes.io/config-backend: |
       http-request set-header X-Forwarded-Proto https
 spec:
+  ingressClassName: haproxy
   rules:
   - host: keycloak.kamuridesu.com
     http:

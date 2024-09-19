@@ -4,6 +4,7 @@ metadata:
   name: trilium-ingress
   namespace: trilium
 spec:
+  ingressClassName: haproxy
   rules:
   - host: notes.kamuridesu.com
     http:

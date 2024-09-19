@@ -4,6 +4,7 @@ metadata:
   name: api-ingress
   namespace: api-default
 spec:
+  ingressClassName: haproxy
   rules:
     - host: api.kamuridesu.com
       http:
