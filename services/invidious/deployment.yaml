@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: inv-sig-helper
-        image: quay.io/invidious/inv-sig-helper:master-215d32c
+        image: quay.io/invidious/inv-sig-helper:master-5025e49
         args:
           - --tcp
           - 0.0.0.0:12999
@@ -35,7 +35,7 @@ spec:
             cpu: '0.05'
 
       - name: invidious
-        image: quay.io/invidious/invidious:2024.08.26-4782a67-arm64
+        image: quay.io/invidious/invidious:2024.10.18-d8b893e-arm64
         envFrom:
         - secretRef:
             name: invidious-secret
