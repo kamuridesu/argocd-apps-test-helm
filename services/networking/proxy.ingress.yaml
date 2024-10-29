@@ -6,13 +6,12 @@ metadata:
 spec:
   ingressClassName: haproxy
   rules:
-  - host: proxy.kamuridesu.com
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: proxy-service
-            port: 
-              number: 1080
+    - http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: proxy-service
+              port: 
+                number: 1080
