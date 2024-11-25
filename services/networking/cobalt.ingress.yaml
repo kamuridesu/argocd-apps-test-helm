@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cobalt-ingress
+  namespace: cobalt
+spec:
+  ingressClassName: haproxy
+  rules:
+  - host: cobalt.kamuridesu.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: moe-cobalt-service
+            port: 
+              number: 9000
