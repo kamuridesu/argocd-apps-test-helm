@@ -13,6 +13,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: moe-cobalt-service
+            name: cobalt-service
             port: 
               number: 9000
