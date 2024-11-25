@@ -43,6 +43,6 @@ spec:
           timeoutSeconds: 5
           failureThreshold: 2
         resources:
-          limits:
-            cpu: "0.09"
-            memory: "500Mi"
+          requests:
+            cpu: "0.125"
+            memory: "300Mi"
