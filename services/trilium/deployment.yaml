@@ -18,7 +18,7 @@ spec:
             claimName: trilium-pvc
       containers:
       - name: trilium
-        image: zadam/trilium:0.63.7
+        image: triliumnext/notes:v0.90.12
         volumeMounts:
           - mountPath: /home/node/trilium-data
             name: trilium-data
