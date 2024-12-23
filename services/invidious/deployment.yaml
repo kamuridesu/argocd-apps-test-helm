@@ -13,29 +13,8 @@ spec:
         app: invidious
     spec:
       containers:
-      - name: inv-sig-helper
-        image: quay.io/invidious/inv-sig-helper:master-5025e49
-        args:
-          - --tcp
-          - 0.0.0.0:12999
-        env:
-          - name: RUST_LOG
-            value: full
-        securityContext:
-          capabilities:
-            drop:
-              - ALL
-          allowPrivilegeEscalation: false
-        resources:
-          limits:
-            memory: 200Mi
-            cpu: '0.1'
-          requests:
-            memory: 100Mi
-            cpu: '0.05'
-
       - name: invidious
-        image: quay.io/invidious/invidious:2024.10.18-d8b893e-arm64
+        image: quay.io/invidious/invidious:2024.11.10-9892604-arm64
         envFrom:
         - secretRef:
             name: invidious-secret
