@@ -1,3 +1,1 @@
-persistence:
-  type: pvc
-  enabled: true
+envFromSecret: grafana-secret
