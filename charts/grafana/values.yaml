@@ -1,1 +1,2 @@
-envFromSecret: grafana-secret
+grafana:
+  envFromSecret: grafana-secret
