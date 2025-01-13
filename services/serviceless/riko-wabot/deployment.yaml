@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: riko-wabot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: riko-wabot
+  template:
+    metadata:
+      labels:
+        app: riko-wabot
+    spec:
+      containers:
+      - name: riko-wabot
+        image: kamuri/riko-wabot:0.1.10
+        envFrom:
+        - secretRef:
+            name: serviceless-riko-wabot-secret
+        resources:
+          limits:
+            cpu: "0.1"
+            memory: "1G"
