@@ -22,3 +22,10 @@ spec:
           limits:
             cpu: "0.1"
             memory: "1G"
+        volumeMounts:
+          - mountPath: /app/states
+            name: riko-data
+      volumes:
+        - name: riko-data
+          persistentVolumeClaim:
+            claimName: riko-wabot-pvc
