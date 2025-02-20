@@ -22,13 +22,3 @@ spec:
           limits:
             cpu: "0.2"
             memory: "500M"
-        livenessProbe:
-          exec:
-            command:
-            - /bin/sh
-            - -c
-            - '[ $(find /tmp/healthz -mmin -1 | wc -l) -eq 1 ] || false'
-          initialDelaySeconds: 5
-          periodSeconds: 10
-
-
