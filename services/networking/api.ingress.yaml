@@ -16,3 +16,10 @@ spec:
                 name: deepdanbooryu-service
                 port:
                   number: 8080
+          - path: /api/ytdl
+            pathType: Prefix
+            backend:
+              service:
+                name: ytdl-producer-api-service
+                port:
+                  number: 8080
