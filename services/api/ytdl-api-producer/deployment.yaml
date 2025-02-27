@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ytdl-producer-api
-        image: kamuri/ytb-dl-service:0.0.4
+        image: kamuri/ytb-dl-service:0.0.5
         args: ["server"]
         env:
           - name: CONTEXT_PATH
