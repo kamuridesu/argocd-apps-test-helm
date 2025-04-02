@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: api-ingress
   namespace: api-default
+  annotations:
+    haproxy.org/path-rewrite: /python-test-api/(.*) /\1
 spec:
   ingressClassName: haproxy
   rules:
@@ -23,3 +25,4 @@ spec:
                 name: ytdl-producer-api-service
                 port:
                   number: 8080
+          - path: /python-test-api
