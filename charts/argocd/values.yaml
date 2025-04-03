@@ -2,3 +2,8 @@ argo-cd:
   server:
     extraArgs:
       - --insecure
+  ingress:
+    enabled: true
+    ingressClassName: haproxy
+    hostname: argo.kamuridesu.com
+    

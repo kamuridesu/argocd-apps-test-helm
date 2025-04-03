@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-ingress
-  namespace: argocd
+  name: keycloak-ingress
+  namespace: keycloak
 spec:
   ingressClassName: haproxy
   rules:
-  - host: argo.kamuridesu.com
+  - host: keycloak.kamuridesu.com
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: argo-cd-argocd-server
-            port: 
-              number: 443
+            name: keycloak-service
+            port:
+              number: 8080

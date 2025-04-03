@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ytdl-producer-api-ingress
+spec:
+  ingressClassName: haproxy
+  rules:
+    - host: api.kamuridesu.com
+      http:
+        paths:
+          - path: /api/ytdl
+            pathType: Prefix
+            backend:
+              service:
+                name: ytdl-producer-api-service
+                port:
+                  number: 8080
