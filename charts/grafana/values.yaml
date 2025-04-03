@@ -1,2 +1,8 @@
 grafana:
   envFromSecret: grafana-secret
+  ingress:
+    enabled: true
+    ingressClassName: haproxy
+    hosts:
+      - grafana.kamuridesu.com
+    
