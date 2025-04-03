@@ -13,26 +13,26 @@ spec:
         app: ytdl-producer-api
     spec:
       containers:
-      - name: ytdl-producer-api
-        image: kamuri/ytb-dl-service:0.0.7
-        args: ["server"]
-        env:
-          - name: CONTEXT_PATH
-            value: /api/ytdl
-        ports:
-        - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /api/ytdl/health
-            port: 8080
-            httpHeaders:
-              - name: Host
-                value: 127.0.0.1
-          initialDelaySeconds: 30
-          periodSeconds: 30
-          timeoutSeconds: 5
-          failureThreshold: 10
-        resources:
-          limits:
-            cpu: "0.1"
-            memory: "800Mi"
+        - name: ytdl-producer-api
+          image: kamuri/ytb-dl-service:0.0.8
+          args: ["server"]
+          env:
+            - name: CONTEXT_PATH
+              value: /api/ytdl
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /api/ytdl/health
+              port: 8080
+              httpHeaders:
+                - name: Host
+                  value: 127.0.0.1
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          resources:
+            limits:
+              cpu: "0.1"
+              memory: "800Mi"
