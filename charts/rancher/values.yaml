@@ -1,4 +1,0 @@
-rancher:
-  tls: external
-  ingress:
-    enabled: false

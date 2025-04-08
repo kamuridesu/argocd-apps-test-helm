@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: riko-wabot
 spec:
+  serviceName: riko-wabot
   replicas: 1
   selector:
     matchLabels:
@@ -13,19 +14,23 @@ spec:
         app: riko-wabot
     spec:
       containers:
-      - name: riko-wabot
-        image: kamuri/riko-wabot:0.1.12
-        envFrom:
-        - secretRef:
-            name: serviceless-riko-wabot-secret
+        - name: riko-wabot
+          image: kamuri/riko-wabot:0.1.12
+          envFrom:
+            - secretRef:
+                name: serviceless-riko-wabot-secret
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: "1G"
+          volumeMounts:
+            - mountPath: /app/states
+              name: riko-data
+  volumeClaimTemplates:
+    - metadata:
+        name: riko-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
         resources:
-          limits:
-            cpu: "0.2"
-            memory: "1G"
-        volumeMounts:
-          - mountPath: /app/states
-            name: riko-data
-      volumes:
-        - name: riko-data
-          persistentVolumeClaim:
-            claimName: riko-wabot-pvc
+          requests:
+            storage: 1Gi
