@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: moe-count
-        image: kamuri/moe-count-go:0.0.7
+        image: kamuri/moe-count-go:0.0.8
         envFrom:
         - secretRef:
             name: count-secret
