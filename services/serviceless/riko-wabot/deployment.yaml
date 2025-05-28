@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: riko-wabot
-          image: kamuri/riko-wabot:0.1.13
+          image: kamuri/riko-wabot:0.1.14
           envFrom:
             - secretRef:
                 name: serviceless-riko-wabot-secret
