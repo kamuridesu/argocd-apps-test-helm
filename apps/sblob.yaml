@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
-    path: services/sblob
+    path: services/blog
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
