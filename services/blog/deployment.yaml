@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: sblob
-          image: kamuri/sblob:0.1
+          image: ghcr.io/kamuridesu/sblob:0.2
           ports:
             - containerPort: 80
           livenessProbe:
