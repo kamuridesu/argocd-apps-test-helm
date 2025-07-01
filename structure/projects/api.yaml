@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: api
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  destinations:
+    - name: "*"
+      namespace: "*"
+      server: "*"
+  sourceRepos:
+    - "*"
+  roles:
+    - description: api
+      groups:
+        - default
+        - admin
+        - api
+      name: api
+      # policies:
+      #   - >-
+      #     p, proj:api:api, applications, *, *, allow
