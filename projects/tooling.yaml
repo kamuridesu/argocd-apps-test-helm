@@ -1,0 +1,15 @@
+apiVersin: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: tooling
+  namespace: argocd
+spec:
+  clusterResourceWhiteList:
+    - group: "*"
+      kind: "*"
+  destinations:
+    - name: "*"
+      namespace: "*"
+      server: "*"
+  sourceRepos:
+    - "*"

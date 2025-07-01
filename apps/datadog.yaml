@@ -16,6 +16,10 @@ spec:
     chart: datadog
     helm:
       values: |
+        agent:
+          image:
+            tagSuffix: jmx # enable jmx metrics for kafka, cassandra, tomcat, etc
+
         datadog:
           apiKeyExistingSecret: datadog-secret
           site: us5.datadoghq.com
@@ -77,6 +81,8 @@ spec:
                     - name: "DD_PROFILING_ENABLED"
                       value: "auto"
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
