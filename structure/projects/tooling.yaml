@@ -4,7 +4,7 @@ metadata:
   name: tooling
   namespace: argocd
 spec:
-  clusterResourceWhiteList:
+  clusterResourceWhitelist:
     - group: "*"
       kind: "*"
   destinations:
