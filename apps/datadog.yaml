@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: datadog
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: datadog
+  project: tooling
+  source:
+    repoURL: https://helm.datadoghq.com
+    targetRevision: "3.120.2"
+    chart: datadog
+    helm:
+      values: |
+        datadog:
+          apiKeyExistingSecret: datadog-secret
+          site: us5.datadoghq.com
+
+          clusterChecks:
+            enabled: true
+
+          clusterAgent:
+            enabled: true
+
+          clusterChecksRunner:
+            enabled: true
+
+          # container view: https://docs.datadoghq.com/infrastructure/containers/?tab=docker
+          containerExclude: "kube_namespace:haproxy-ingress"
+          containerExcludeLogs: "kube_namespace:haproxy-ingress"
+          containerExcludeMetrics: "kube_namespace:haproxy-ingress"
+
+          containerImageCollection:
+            enabled: false
+
+          kubelet:
+            tlsVerify: false
+
+          otlp:
+            receiver:
+              protocols:
+                grcp:
+                  enabled: true
+                http:
+                  enabled: true
+
+          logLevel: WARN
+          logs:
+            containerCollectAll: false
+            containerCollectUsingFiles: false
+            enabled: false
+          networkingMonitoring:
+            enabled: false
+
+          apm:
+            enabled: true
+            instrumentation:
+              enabled: true
+              targets:
+                - name: "python-projects"
+                  podSelector:
+                    matchLabels:
+                      language: python
+                  ddTraceVersions:
+                    python: "3"
+                - name: "java-projects"
+                  podSelector:
+                    matchLabels:
+                      language: java
+                  ddTraceVersions:
+                    java: "default"
+                  ddTraceConfigs:
+                    - name: "DD_PROFILING_ENABLED"
+                      value: "auto"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
