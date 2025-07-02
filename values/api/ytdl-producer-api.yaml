@@ -40,5 +40,6 @@ ingress:
   className: haproxy
   hosts:
     - host: api.kamuridesu.com
-      path: /api/ytdl
-      pathType: Prefix
+      paths:
+        path: /api/ytdl
+        pathType: Prefix
