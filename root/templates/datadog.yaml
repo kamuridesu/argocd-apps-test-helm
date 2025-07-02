@@ -23,6 +23,7 @@ spec:
         datadog:
           apiKeyExistingSecret: datadog-secret
           site: us5.datadoghq.com
+          clusterName: k3s-oci
 
           clusterChecks:
             enabled: true
