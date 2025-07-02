@@ -1,6 +1,7 @@
 enabled: true
 replicas: 1
 language: python
+version: "0.0.3"
 image:
   repository: "kamuri/unrestrict-bot"
 envFrom:
