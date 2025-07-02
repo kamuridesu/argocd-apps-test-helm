@@ -1,0 +1,49 @@
+enabled: true
+replicas: 1
+language: go
+version: "0.0.8"
+image:
+  repository: kamuri/moe-count-go
+
+envFrom:
+  - secretRef:
+      name: count-secret
+
+resources:
+  limits:
+    cpu: "0.055"
+    memory: "80Mi"
+
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+service:
+  port: 8080
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: count.kamuridesu.com
+      paths:
+        - path: /
+          pathType: Prefix
