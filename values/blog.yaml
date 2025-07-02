@@ -1,0 +1,44 @@
+enabled: true
+version: "0.3.0"
+replicas: 1
+image:
+  repository: ghcr.io/kamuridesu/sblob
+
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /
+      port: 80
+      initialDelaySeconds: 30
+      periodSeconds: 30
+      timeoutSeconds: 5
+      failureThreshold: 2
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /
+      port: 80
+      initialDelaySeconds: 15
+      periodSeconds: 30
+      timeoutSeconds: 5
+      failureThreshold: 2
+
+resources:
+  limits:
+    cpu: "0.005"
+    memory: "10Mi"
+
+service:
+  port: 80
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: kamuridesu.com
+      paths:
+        - path: /
+          pathType: Prefix

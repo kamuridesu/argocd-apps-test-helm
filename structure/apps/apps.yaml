@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argocd-structure
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
+        revision: main
+        files:
+          - path: "values/*"
+  template:
+    metadata:
+      name: "{{ trunc 48 (path.name) }}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/kamuridesu/kamuchart.git
+        targetRevision: main
+        path: /
+        valueFiles:
+          - "{{ path }}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: argocd
