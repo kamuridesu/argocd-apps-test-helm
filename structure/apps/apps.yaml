@@ -1,26 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: argocd-structure
+  name: apps-charts
   namespace: argocd
 spec:
+  goTemplate: true
   generators:
     - git:
         repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
         revision: main
         files:
-          - path: "values/*"
+          - path: "values/**/*.yaml"
   template:
     metadata:
-      name: "{{ trunc 48 (path.name) }}"
+      name: '{{.path.filename | trimSuffix ".yaml"}}'
     spec:
       project: default
-      source:
-        repoURL: https://github.com/kamuridesu/kamuchart.git
-        targetRevision: main
-        path: /
-        valueFiles:
-          - "{{ path }}"
+      sources:
+        - repoURL: https://github.com/kamuridesu/kamuchart.git
+          path: kamuchart
+          targetRevision: main
+          helm:
+            valueFiles:
+              - "$values/{{.path.path}}/{{.path.filename}}"
+        - repoURL: "https://github.com/kamuridesu/argocd-apps-test-helm.git"
+          path: "."
+          ref: values
       syncPolicy:
         automated:
           prune: true
@@ -29,4 +34,4 @@ spec:
           - CreateNamespace=true
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: argocd
+        namespace: "{{.path.basenameNormalized}}"

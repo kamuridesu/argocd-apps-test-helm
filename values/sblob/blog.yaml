@@ -10,10 +10,10 @@ readinessProbe:
     httpGet:
       path: /
       port: 80
-      initialDelaySeconds: 30
-      periodSeconds: 30
-      timeoutSeconds: 5
-      failureThreshold: 2
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
 
 livenessProbe:
   enabled: true
@@ -21,10 +21,10 @@ livenessProbe:
     httpGet:
       path: /
       port: 80
-      initialDelaySeconds: 15
-      periodSeconds: 30
-      timeoutSeconds: 5
-      failureThreshold: 2
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
 
 resources:
   limits:
