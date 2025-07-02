@@ -4,9 +4,13 @@
 
 The charts folder will store all charts needed for our projects. For example, we have an ArgoCD chart that is an umbrella chart for ArgoCD to be able to manage itself.
 
-Apps folder contains informations about ArgoCD applications files, defining the location where the kuberentes files are stored.
+The `apps` folder contains the default manifest which is an entrypoint to manage other resources such as the ArgoCD itself.
 
-There'll be a projects folder that will be organized by namespace, where each namespace contains the projects that will be run on our Kubernetes cluster.
+On the `root` we have some Applications pointing to the configs to be applied.
+
+The `structure` folder stores some management files for ArgoCD like groups and ApplicationSets.
+
+On `values` I put my values files for my Helm Chart. It's structured like: `values/namespace/values.yaml`, where namespace will be the namespace for the project.
 
 # Info
 

@@ -1,6 +1,6 @@
 # ArgoCD apps
 
-This folder contains ArgoCD Applications and ApplicationSets.
+This folder contains ArgoCD Applications and ApplicationSets. It's the root of all applications, projects and configs.
 
 ## References
 
