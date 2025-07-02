@@ -9,6 +9,9 @@ image:
 env:
   - name: CONTEXT_PATH
     value: /api/ytdl
+monitoring:
+  datadog:
+    enabled: true
 service:
   port: 8080
 resources:
