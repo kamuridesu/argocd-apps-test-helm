@@ -1,0 +1,14 @@
+enabled: true
+replicas: 1
+language: python
+image:
+  repository: "kamuri/unrestrict-bot"
+envFrom:
+  - secretRef:
+      name: serviceless-unrestrict-tg-bot-secret
+resources:
+  limits:
+    cpu: "0.2"
+    memory: "500M"
+service:
+  headless: true
