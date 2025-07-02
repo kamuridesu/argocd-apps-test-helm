@@ -41,5 +41,5 @@ ingress:
   hosts:
     - host: api.kamuridesu.com
       paths:
-        path: /api/ytdl
-        pathType: Prefix
+        - path: /api/ytdl
+          pathType: Prefix
