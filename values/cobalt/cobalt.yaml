@@ -1,0 +1,41 @@
+enabled: true
+replicas: 1
+version: "0.0.1"
+language: node-js
+image:
+  repository: "kamuri/cobalt-k8s"
+envFrom:
+  - secretRef:
+      name: cobalt-secret
+service:
+  port: 9000
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /
+      port: 9000
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /
+      port: 9000
+    initialDelaySeconds: 10
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: cobalt.kamuridesu.com
+      paths:
+        - path: /
+          pathType: Prefix
