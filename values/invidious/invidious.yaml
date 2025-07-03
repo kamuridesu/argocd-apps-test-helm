@@ -1,0 +1,42 @@
+enabled: true
+environment: prod
+replicas: 1
+version: "2024.11.10-9892604-arm64"
+image:
+  repository: quay.io/invidious/invidious
+envFrom:
+  - secretRef:
+      name: invidious-secret
+service:
+  port: 3000
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /api/v1/comments/jNQXAC9IVRw
+      port: 3000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+
+ReadinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /api/v1/comments/jNQXAC9IVRw
+      port: 3000
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: inv.kamuridesu.com
+      paths:
+        - path: /
+          pathType: Prefix
