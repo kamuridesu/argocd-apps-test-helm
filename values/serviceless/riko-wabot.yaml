@@ -4,7 +4,7 @@ image:
 version: "0.1.14"
 replicas: 1
 language: node-js
-env: prod
+environment: prod
 
 envFrom:
   - secretRef:

@@ -2,7 +2,7 @@ enabled: true
 version: "0.0.9"
 replicas: 1
 language: "python"
-env: prod
+environment: prod
 args:
   - "server"
 image:

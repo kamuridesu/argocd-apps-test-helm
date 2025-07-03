@@ -2,7 +2,7 @@ enabled: true
 replicas: 1
 language: go
 version: "0.0.8"
-env: prod
+environment: prod
 image:
   repository: kamuri/moe-count-go
 
