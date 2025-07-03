@@ -1,0 +1,70 @@
+enabled: true
+image:
+  repository: triliumnext/notes
+version: "v0.90.12"
+replicas: 1
+language: node-js
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /api/health-check
+      port: 8080
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /api/health-check
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+resources:
+  limits:
+    cpu: "0.09"
+    memory: 400Mi
+  requests:
+    cpu: "0.05"
+    memory: 200Mi
+
+volumeMounts:
+  - mountPath: /home/node/trilium-data
+    name: trilium-data
+
+volumeClaimTemplates: # This tells the chart to generate a StatefulSet
+  - metadata:
+      name: trilium-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 1Gi
+
+service:
+  port: 8080
+
+persistentVolume:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  hostPath:
+    path: /trilium-data
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: notes.kamuridesu.com
+      paths:
+        - path: /
+          pathType: Prefix
