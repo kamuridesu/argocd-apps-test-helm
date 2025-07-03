@@ -2,6 +2,8 @@ enabled: true
 replicas: 1
 environment: prod
 version: "25.0.2-0"
+image:
+  repository: quay.io/keycloak/keycloak
 args:
   - start
   - "--hostname"
