@@ -1,6 +1,7 @@
 enabled: true
 replicas: 1
 version: "0.0.1"
+env: prod
 image:
   repository: "kamuri/regexbot"
 envFrom:

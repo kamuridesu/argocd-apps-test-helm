@@ -1,6 +1,7 @@
 enabled: true
 version: "0.3.0"
 replicas: 1
+env: prod
 image:
   repository: ghcr.io/kamuridesu/sblob
 

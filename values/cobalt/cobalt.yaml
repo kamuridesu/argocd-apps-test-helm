@@ -2,6 +2,7 @@ enabled: true
 replicas: 1
 version: "0.0.1"
 language: node-js
+env: prod
 image:
   repository: "kamuri/cobalt-k8s"
 envFrom:
