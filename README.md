@@ -10,8 +10,8 @@ On the `root` we have some Applications pointing to the configs to be applied.
 
 The `structure` folder stores some management files for ArgoCD like groups and ApplicationSets.
 
-On `values` I put my values files for my Helm Chart. It's structured like: `values/namespace/values.yaml`, where namespace will be the namespace for the project.
+On `values` I put my values files for my Helm Chart. It's structured like: `values/namespace/app.yaml`, where namespace will be the namespace for the project and app will be the base name.
 
 # Info
 
-This project is part of a series of study about Kubernetes on ARM, cloud, ArgoCD, Helm, Ansible and much more. All the information about the project is stored in the https://github.com/kamuridesu/oracle-k3s-config
+This project is part of a series of study about Kubernetes on ARM, cloud, ArgoCD, Helm, Ansible and much more. All the information about the project is stored in the <https://github.com/kamuridesu/oracle-k3s-config> repo.
