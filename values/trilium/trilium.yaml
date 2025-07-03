@@ -1,6 +1,6 @@
 enabled: true
 image:
-  repository: triliumnext/notes
+  repository: triliumnext/trilium
 version: "v0.96.0"
 replicas: 1
 language: node-js
