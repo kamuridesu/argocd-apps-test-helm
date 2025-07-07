@@ -1,0 +1,30 @@
+name: "Update image"
+
+on:
+  repository_dispatch:
+    types:
+      - update-version
+
+jobs:
+  update:
+    name: "Update image version"
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update version in values file
+        run: |
+          VERSION="${{ github.event.client_payload.version }}"
+          FILE_PATH="${{ github.event.client_payload.file_path }}"
+          IMAGE_NAME="${{ github.event.client_payload.image_name }}"
+
+          sed -i "s/^version:.*/version: \"${VERSION}\"/" "${FILE_PATH}"
+
+          echo "Updated ${FILE_PATH} to version ${VERSION}"
+
+          git config --global user.name "Github ACtions"
+          git config --global user.email github-actions@github.com
+
+          git commit -am "feat: update ${IMAGE_NAME} to ${VERSION}"
+          git push
