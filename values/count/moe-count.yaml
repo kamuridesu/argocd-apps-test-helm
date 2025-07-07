@@ -10,6 +10,10 @@ envFrom:
   - secretRef:
       name: count-secret
 
+monitoring:
+  datadog:
+    enabled: true
+
 resources:
   limits:
     cpu: "0.055"
