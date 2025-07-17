@@ -1,0 +1,66 @@
+enabled: true
+image:
+  repository: binwiederhier/ntfy
+version: "v2.13"
+replicas: 1
+language: go
+environment: prod
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /v1/health
+      port: 80
+    initialDelaySeconds: 10
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /v1/health
+      port: 80
+    initialDelaySeconds: 5
+
+resources:
+  limits:
+    cpu: "0.1"
+    memory: 1G
+
+volumeMounts:
+  - mountPath: /var/cache/ntfy
+    name: cache
+  - mountPath: /var/lib/ntfy
+    name: users
+  - mountPath: /etc/ntfy
+    name: config
+    readOnly: true
+
+volumes:
+  - name: config
+    secret:
+      secretName: ntfy-secret
+      items:
+        - key: config
+          path: /
+
+volumeClaimTemplates: # This tells the chart to generate a StatefulSet
+  - metadata:
+      name: cache
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 1Gi
+  - metadata:
+      name: users
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 1Gi
+
+service:
+  headless: false
+  port: 80
