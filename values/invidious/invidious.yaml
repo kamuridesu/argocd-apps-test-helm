@@ -21,7 +21,7 @@ livenessProbe:
     timeoutSeconds: 5
     failureThreshold: 5
 
-ReadinessProbe:
+readinessProbe:
   enabled: true
   probes:
     httpGet:
