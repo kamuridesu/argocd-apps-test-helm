@@ -1,0 +1,59 @@
+enabled: true
+version: "0.0.1"
+replicas: 1
+language: "python"
+environment: prod
+
+image:
+  repository: ghcr.io/kamuridesu/pokelogger
+
+envFrom:
+  - secretRef:
+      name: tools-pokelogger-secret
+
+env:
+  - name: CONTEXT_PATH
+    value: /pokelogger
+
+monitoring:
+  datadog:
+    enabled: true
+
+service:
+  port: 8080
+
+resources:
+  limits:
+    cpu: "0.1"
+    memory: "200Mi"
+
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 10
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: tools.kamuridesu.com
+      paths:
+        - path: /pokelogger
+          pathType: Prefix
