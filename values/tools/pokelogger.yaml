@@ -31,7 +31,7 @@ readinessProbe:
   enabled: true
   probes:
     httpGet:
-      path: /health
+      path: /pokelogger/health
       port: 8080
     initialDelaySeconds: 15
     periodSeconds: 30
@@ -42,7 +42,7 @@ livenessProbe:
   enabled: true
   probes:
     httpGet:
-      path: /health
+      path: /pokelogger/health
       port: 8080
     initialDelaySeconds: 20
     periodSeconds: 30
