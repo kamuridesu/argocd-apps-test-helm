@@ -1,0 +1,53 @@
+enabled: true
+replicas: 1
+language: go
+version: "0.0.1"
+environment: prod
+image:
+  repository: ghcr.io/kamuridesu/go-dd-instrumentation
+
+env:
+  CONTEXT_PATH: /dd-test
+
+monitoring:
+  datadog:
+    enabled: true
+
+resources:
+  limits:
+    cpu: "0.035"
+    memory: "30Mi"
+
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /dd-test/health/
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /dd-test/health/
+      port: 8080
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 2
+
+service:
+  port: 8080
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: tools.kamuridesu.com
+      paths:
+        - path: /dd-test
+          pathType: Prefix
