@@ -1,7 +1,7 @@
 enabled: true
 replicas: 1
 language: go
-version: "dd"
+version: "0.1"
 environment: prod
 image:
   repository: kamuri/go-dd-instrumentation
