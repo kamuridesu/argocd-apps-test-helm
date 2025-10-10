@@ -1,10 +1,10 @@
 enabled: true
 replicas: 1
 language: go
-version: "0.0.1"
+version: "0.1"
 environment: prod
 image:
-  repository: ghcr.io/kamuridesu/go-dd-instrumentation
+  repository: kamuri/go-dd-instrumentation
 
 env:
   CONTEXT_PATH: /dd-test
