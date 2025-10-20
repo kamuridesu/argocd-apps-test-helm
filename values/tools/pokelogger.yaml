@@ -1,5 +1,5 @@
 enabled: true
-version: "0.0.6"
+version: "0.0.7"
 replicas: 1
 language: "python"
 environment: prod
