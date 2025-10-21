@@ -3,7 +3,9 @@ version: "5840f46c3c837ef261c6888e5bbb0fc4d706c026"
 replicas: 1
 environment: prod
 image:
-  repository: ghcr.io/ICEI-PUC-Minas-PMV-SI/rebobina
+  repository: ghcr.io/icei-puc-minas-pmv-si/rebobina
+imagePullSecrets:
+  - name: registry-secrets
 
 readinessProbe:
   enabled: true
