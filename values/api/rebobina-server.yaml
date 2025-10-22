@@ -1,0 +1,49 @@
+enabled: true
+version: "0"
+replicas: 1
+language: "nodejs"
+environment: prod
+image:
+  repository: "ghcr.io/icei-puc-minas-pmv-si/rebobina-server"
+imagePullSecrets:
+  - name: registry-secrets
+
+monitoring:
+  datadog:
+    enabled: false
+
+service:
+  port: 3000
+
+resources:
+  limits:
+    cpu: "0.055"
+    memory: "100Mi"
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /
+      port: 8080
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /
+      port: 8080
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 10
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: api.kamuridesu.com
+      paths:
+        - path: /api
+          pathType: Prefix
