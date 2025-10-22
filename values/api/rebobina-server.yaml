@@ -1,5 +1,5 @@
 enabled: true
-version: "0"
+version: "fec0ae7f6e52cdf6a782077699de5b97f66273f8"
 replicas: 1
 language: "nodejs"
 environment: prod
