@@ -9,7 +9,7 @@ image:
   repository: "kamuri/ytb-dl-service"
 env:
   - name: CONTEXT_PATH
-    value: /api/ytdl
+    value: /ytdl
 monitoring:
   datadog:
     enabled: true
@@ -23,7 +23,7 @@ readinessProbe:
   enabled: true
   probes:
     httpGet:
-      path: /api/ytdl/health
+      path: /ytdl/health
       port: 8080
     initialDelaySeconds: 15
     periodSeconds: 30
@@ -33,7 +33,7 @@ livenessProbe:
   enabled: true
   probes:
     httpGet:
-      path: /api/ytdl/health
+      path: /ytdl/health
       port: 8080
     initialDelaySeconds: 20
     periodSeconds: 30
@@ -45,5 +45,5 @@ ingress:
   hosts:
     - host: api.kamuridesu.com
       paths:
-        - path: /api/ytdl
+        - path: /ytdl
           pathType: Prefix
