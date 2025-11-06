@@ -1,5 +1,5 @@
 enabled: true
-version: "25910b79bae07372c47008abcd5cda1a8321c3fc"
+version: "4a06539dde08335850c4767c10fa1b4ec0e65eaf"
 replicas: 1
 environment: prod
 image:
