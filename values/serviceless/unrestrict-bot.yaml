@@ -10,7 +10,7 @@ envFrom:
       name: serviceless-unrestrict-tg-bot-secret
 resources:
   limits:
-    cpu: "0.2"
+    cpu: "0.1"
     memory: "500M"
 service:
   headless: true

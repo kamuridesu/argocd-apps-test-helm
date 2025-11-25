@@ -24,7 +24,7 @@ service:
 
 resources:
   limits:
-    cpu: "0.1"
+    cpu: "0.08"
     memory: "200Mi"
 
 readinessProbe:

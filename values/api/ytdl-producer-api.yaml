@@ -17,7 +17,7 @@ service:
   port: 8080
 resources:
   limits:
-    cpu: "0.1"
+    cpu: "0.08"
     memory: "800Mi"
 readinessProbe:
   enabled: true
