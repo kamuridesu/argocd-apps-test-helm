@@ -57,9 +57,9 @@ spec:
           logs:
             containerCollectAll: false
             containerCollectUsingFiles: false
-            enabled: false
+            enabled: true
           networkingMonitoring:
-            enabled: false
+            enabled: true
 
           apm:
             enabled: true
