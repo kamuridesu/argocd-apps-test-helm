@@ -39,7 +39,7 @@ readinessProbe:
   probes:
     httpGet:
       path: /java-dd-test-two/actuator/health
-      port: 3000
+      port: 8080
     initialDelaySeconds: 60
     periodSeconds: 30
     timeoutSeconds: 5
@@ -49,7 +49,7 @@ livenessProbe:
   probes:
     httpGet:
       path: /java-dd-test-two/actuator/health
-      port: 3000
+      port: 8080
     initialDelaySeconds: 70
     periodSeconds: 30
     timeoutSeconds: 5
