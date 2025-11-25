@@ -27,6 +27,12 @@ env:
   - name: JAVA_TOOL_OPTIONS
     value: -Xms128m -Xmx300m
 
+  - name: DD_SERVICE
+    value: "java-dd-test"
+
+  - name: SPRING_APPLICATION_NAME
+    value: "java-dd-test"
+
 resources:
   limits:
     cpu: "0.1"
