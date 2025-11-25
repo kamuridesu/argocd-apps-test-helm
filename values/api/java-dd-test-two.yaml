@@ -36,6 +36,9 @@ env:
   - name: SPRING_APPLICATION_NAME
     value: "java-dd-test-two"
 
+  - name: DD_TRACE_HEADER_TAGS
+    value: "x-correlation-id:x-correlation-id,baggage:baggage"
+
 resources:
   limits:
     cpu: "0.1"
