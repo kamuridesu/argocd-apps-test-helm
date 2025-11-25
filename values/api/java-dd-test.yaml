@@ -1,5 +1,5 @@
 enabled: true
-version: "0.2"
+version: "0.3"
 replicas: 1
 environment: prod
 image:
@@ -37,7 +37,7 @@ readinessProbe:
     httpGet:
       path: /java-dd-test/actuator/health
       port: 8080
-    initialDelaySeconds: 60
+    initialDelaySeconds: 90
     periodSeconds: 30
     timeoutSeconds: 5
     failureThreshold: 5
@@ -47,7 +47,7 @@ livenessProbe:
     httpGet:
       path: /java-dd-test/actuator/health
       port: 8080
-    initialDelaySeconds: 70
+    initialDelaySeconds: 100
     periodSeconds: 30
     timeoutSeconds: 5
     failureThreshold: 10
