@@ -27,17 +27,20 @@ env:
   - name: CONTEXT_URL
     value: "http://api.kamuridesu.com/java-dd-test"
 
+  - name: JAVA_TOOL_OPTIONS
+    value: -Xms128m -Xmx300m
+
 resources:
   limits:
     cpu: "0.055"
-    memory: "100Mi"
+    memory: "300Mi"
 readinessProbe:
   enabled: true
   probes:
     httpGet:
       path: /java-dd-test-two/actuator/health
       port: 3000
-    initialDelaySeconds: 15
+    initialDelaySeconds: 60
     periodSeconds: 30
     timeoutSeconds: 5
     failureThreshold: 5
@@ -47,7 +50,7 @@ livenessProbe:
     httpGet:
       path: /java-dd-test-two/actuator/health
       port: 3000
-    initialDelaySeconds: 20
+    initialDelaySeconds: 70
     periodSeconds: 30
     timeoutSeconds: 5
     failureThreshold: 10
