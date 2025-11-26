@@ -15,6 +15,9 @@ env:
   - name: CONTEXT_PATH
     value: /pokelogger
 
+  - name: DD_TRACE_HEADER_TAGS
+    value: "x-correlation-id:x-correlation-id,baggage:baggage"
+
 monitoring:
   datadog:
     enabled: true

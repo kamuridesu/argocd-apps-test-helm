@@ -38,7 +38,7 @@ env:
 
 resources:
   limits:
-    cpu: "0.1"
+    cpu: "0.2"
     memory: "300Mi"
 readinessProbe:
   enabled: true
