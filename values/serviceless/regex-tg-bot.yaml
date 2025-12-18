@@ -9,7 +9,7 @@ envFrom:
       name: serviceless-regex-tg-bot-secret
 resources:
   limits:
-    cpu: "0.08"
-    memory: "500M"
+    cpu: "0.05"
+    memory: "80M"
 service:
   headless: true

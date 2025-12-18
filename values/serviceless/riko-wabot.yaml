@@ -17,8 +17,8 @@ readinessProbe:
 
 resources:
   limits:
-    cpu: "0.2"
-    memory: 2G
+    cpu: "0.17"
+    memory: 1G
 
 volumeMounts:
   - mountPath: /app/states

@@ -21,9 +21,6 @@ env:
       fieldRef:
         fieldPath: status.hostIP
 
-  - name: OTEL_EXPORTER_OTLP_ENDPOINT
-    value: "http://$(HOST_IP):4318"
-
   - name: CONTEXT_URL
     value: "http://api.kamuridesu.com/java-dd-test"
 
@@ -37,7 +34,7 @@ env:
     value: "java-dd-test-two"
 
   - name: DD_TRACE_HEADER_TAGS
-    value: "x-correlation-id:x-correlation-id,baggage:baggage"
+    value: "x-correlation-id:context.usr.correlation_id"
 
 resources:
   limits:

@@ -34,7 +34,7 @@ env:
     value: "java-dd-test"
 
   - name: DD_TRACE_HEADER_TAGS
-    value: "x-correlation-id:x-correlation-id,baggage:baggage"
+    value: "x-correlation-id:context.usr.correlation_id"
 
 resources:
   limits:
