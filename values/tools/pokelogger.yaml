@@ -1,5 +1,5 @@
 enabled: true
-version: "3518d088abed5da000a2ecb86bbe4e7da825061e"
+version: "a1c2b2ab7ccb75cc11271ee9128b0820e37c68fb"
 replicas: 1
 language: "python"
 environment: prod
