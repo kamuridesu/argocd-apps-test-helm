@@ -21,9 +21,6 @@ env:
       fieldRef:
         fieldPath: status.hostIP
 
-  - name: OTEL_EXPORTER_OTLP_ENDPOINT
-    value: "http://$(HOST_IP):4318"
-
   - name: JAVA_TOOL_OPTIONS
     value: -Xms128m -Xmx300m
 
@@ -35,6 +32,9 @@ env:
 
   - name: DD_TRACE_HEADER_TAGS
     value: "baggage:context.correlation_id"
+
+  - name: DD_TRACE_PROPAGATION_STYLE_EXTRACT
+    value: tracecontext,baggage
 
 resources:
   limits:

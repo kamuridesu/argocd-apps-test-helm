@@ -36,6 +36,9 @@ env:
   - name: DD_TRACE_HEADER_TAGS
     value: "baggage:context.correlation_id"
 
+  - name: DD_TRACE_PROPAGATION_STYLE_EXTRACT
+    value: tracecontext,baggage
+
 resources:
   limits:
     cpu: "0.2"
