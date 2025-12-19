@@ -1,5 +1,5 @@
 enabled: true
-version: "0.4.1"
+version: "0.5.0"
 replicas: 1
 environment: prod
 image:
