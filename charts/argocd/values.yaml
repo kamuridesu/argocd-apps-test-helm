@@ -9,6 +9,8 @@ argo-cd:
       hostname: argo.kamuridesu.com
 
   configs:
+    secret:
+      createSecret: false
     cm:
       url: "https://argo.kamuridesu.com"
       oidc.config: |
