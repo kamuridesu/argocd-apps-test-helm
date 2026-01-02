@@ -18,7 +18,6 @@ argo-cd:
   configs:
     cm:
       url: "https://argo.kamuridesu.com"
-
       oidc.config: |
         name: Keycloak
         issuer: https://keycloak.kamuridesu.com/realms/kamuservices
