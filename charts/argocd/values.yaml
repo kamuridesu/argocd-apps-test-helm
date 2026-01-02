@@ -23,7 +23,7 @@ argo-cd:
         name: Keycloak
         issuer: https://keycloak.kamuridesu.com/realms/kamuservices
         clientID: argocd
-        clientSecret: $KEYCLOAK_CLIENT_SECRET
+        clientSecret: k2VFZNy6avdcdlHShdL5DpgG0AIYhesa
         requestedScopes: ["openid", "profile", "email", "groups"]
 
     rbac:
