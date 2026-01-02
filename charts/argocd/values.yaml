@@ -15,17 +15,17 @@ argo-cd:
       ingressClassName: haproxy
       hostname: argo.kamuridesu.com
 
-    configs:
-      cm:
-        url: "https://argo.kamuridesu.com"
+  configs:
+    cm:
+      url: "https://argo.kamuridesu.com"
 
-        oidc.config: |
-          name: Keycloak
-          issuer: https://keycloak.kamuridesu.com/realms/kamuservices
-          clientSecret: $KEYCLOAK_CLIENT_SECRET
-          requestedScopes: ["openid", "profile", "email", "groups"]
+      oidc.config: |
+        name: Keycloak
+        issuer: https://keycloak.kamuridesu.com/realms/kamuservices
+        clientSecret: $KEYCLOAK_CLIENT_SECRET
+        requestedScopes: ["openid", "profile", "email", "groups"]
 
-      rbac:
-        policy.default: role:readonly
-        policy.csv: |
-          g, /ArgoCDAdmins, role:admin
+    rbac:
+      policy.default: role:readonly
+      policy.csv: |
+        g, /ArgoCDAdmins, role:admin
