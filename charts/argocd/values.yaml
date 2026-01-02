@@ -3,13 +3,6 @@ argo-cd:
     extraArgs:
       - --insecure
 
-    env:
-      - name: KEYCLOAK_CLIENT_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: argocd-keycloak-secret
-            key: clientSecret
-
     ingress:
       enabled: true
       ingressClassName: haproxy
@@ -22,7 +15,7 @@ argo-cd:
         name: Keycloak
         issuer: https://keycloak.kamuridesu.com/realms/kamuservices
         clientID: argocd
-        clientSecret: $KEYCLOAK_CLIENT_SECRET
+        clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]
 
     rbac:
