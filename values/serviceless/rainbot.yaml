@@ -1,0 +1,26 @@
+enabled: true
+image:
+  repository: ghcr.io/kamuridesu/rainbot
+version: ""
+replicas: 1
+language: go
+environment: prod
+monitoring:
+  datadog:
+    enabled: false
+envFrom:
+  - secretRef:
+      name: serviceless-rainbot-secret
+
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false
+
+resources:
+  limits:
+    cpu: "0.1"
+    memory: 0.5G
+
+service:
+  headless: true
