@@ -1,4 +1,4 @@
-enabled: true
+enabled: false
 version: "0.6"
 replicas: 1
 environment: prod

@@ -1,4 +1,4 @@
-enabled: true
+enabled: false
 version: "e12c143cf10266f0d670e2c9d1de4a1b9f562ef0"
 replicas: 1
 language: "nodejs"
