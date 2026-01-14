@@ -1,0 +1,53 @@
+enabled: true
+version: "0.1"
+replicas: 1
+language: "node-js"
+environment: prod
+image:
+  repository: "kamuri/nodejs-express-instrumentation"
+
+monitoring:
+  datadog:
+    enabled: true
+
+service:
+  port: 8080
+
+env:
+  - name: PREFIX
+    value: /nodejs/api
+
+resources:
+  limits:
+    cpu: "0.055"
+    memory: "100Mi"
+
+readinessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 15
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 20
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 10
+
+ingress:
+  enabled: true
+  className: haproxy
+  hosts:
+    - host: api.kamuridesu.com
+      paths:
+        - path: /nodejs/api
+          pathType: Prefix
