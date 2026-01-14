@@ -81,6 +81,12 @@ spec:
                   ddTraceConfigs:
                     - name: "DD_PROFILING_ENABLED"
                       value: "auto"
+                - name: "nodejs-projects"
+                  podSelector:
+                    matchLabels:
+                      language: node-js 
+                  ddTraceVersions:
+                    js: "latest"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
