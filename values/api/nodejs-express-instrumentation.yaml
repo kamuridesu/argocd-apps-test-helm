@@ -20,6 +20,12 @@ env:
     value: "true"
   - name: DD_TRACE_STARTUP_LOGS
     value: "true"
+  - name: NODE_OPTIONS
+    value: "--require /datadog-lib/node_modules/dd-trace/init"
+  - name: DD_SERVICE
+    value: "nodejs-express-instrumentation"
+  - name: DD_ENV
+    value: "prod"
 
 resources:
   limits:
