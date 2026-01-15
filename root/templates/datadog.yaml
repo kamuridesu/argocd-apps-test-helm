@@ -86,7 +86,7 @@ spec:
                     matchLabels:
                       language: node-js 
                   ddTraceVersions:
-                    js: "default"
+                    js: "4.55.0"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
