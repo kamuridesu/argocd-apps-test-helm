@@ -16,25 +16,25 @@ service:
 env:
   - name: PREFIX
     value: /nodejs/api
-  - name: DD_TRACE_DEBUG
-    value: "true"
-  - name: DD_TRACE_STARTUP_LOGS
-    value: "true"
-  - name: NODE_OPTIONS
-    value: "--require /datadog-lib/node_modules/dd-trace/init"
-  - name: DD_SERVICE
-    value: "nodejs-express-instrumentation"
-  - name: DD_ENV
-    value: "prod"
+#  - name: DD_TRACE_DEBUG
+#    value: "true"
+#  - name: DD_TRACE_STARTUP_LOGS
+#    value: "true"
+#  - name: NODE_OPTIONS
+#    value: "--require /datadog-lib/node_modules/dd-trace/init"
+#  - name: DD_SERVICE
+#    value: "nodejs-express-instrumentation"
+#  - name: DD_ENV
+#    value: "prod"
+#
+#volumes:
+#  - name: datadog-auto-instrumentation
+#    emptyDir: {}
 
-volumes:
-  - name: datadog-auto-instrumentation
-    emptyDir: {}
-
-volumeMounts:
-  - name: datadog-auto-instrumentation
-    mountPath: /datadog-lib
-    subPath: opt/datadog/apm/library/js
+#volumeMounts:
+#  - name: datadog-auto-instrumentation
+#    mountPath: /datadog-lib
+#    subPath: opt/datadog/apm/library/js
 
 resources:
   limits:
