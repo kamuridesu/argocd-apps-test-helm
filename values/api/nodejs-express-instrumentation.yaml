@@ -27,6 +27,15 @@ env:
   - name: DD_ENV
     value: "prod"
 
+volumes:
+  - name: datadog-auto-instrumentation
+    emptyDir: {}
+
+volumeMounts:
+  - name: datadog-auto-instrumentation
+    mountPath: /datadog-lib
+    subPath: opt/datadog/apm/library/js
+
 resources:
   limits:
     cpu: "0.055"
