@@ -26,9 +26,7 @@ env:
     value: "nodejs-express-instrumentation"
   - name: DD_ENV
     value: "prod"
-volumeMounts:
-  - name: datadog-auto-instrumentation
-    mountPath: /datadog-lib
+
 resources:
   limits:
     cpu: "0.055"
