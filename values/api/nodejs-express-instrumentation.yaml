@@ -16,6 +16,10 @@ service:
 env:
   - name: PREFIX
     value: /nodejs/api
+  - name: DD_TRACE_DEBUG
+    value: "true"
+  - name: DD_TRACE_STARTUP_LOGS
+    value: "true"
 
 resources:
   limits:
