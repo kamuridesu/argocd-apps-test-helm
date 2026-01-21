@@ -12,7 +12,7 @@ spec:
   project: tooling
   source:
     repoURL: https://helm.datadoghq.com
-    targetRevision: "3.120.2"
+    targetRevision: "3.161.1"
     chart: datadog
     helm:
       values: |
@@ -40,7 +40,7 @@ spec:
           containerExcludeMetrics: "kube_namespace:haproxy-ingress"
 
           containerImageCollection:
-            enabled: false
+            enabled: true
 
           kubelet:
             tlsVerify: false
@@ -55,8 +55,8 @@ spec:
 
           logLevel: WARN
           logs:
-            containerCollectAll: false
-            containerCollectUsingFiles: false
+            containerCollectAll: true
+            containerCollectUsingFiles: true
             enabled: true
           networkingMonitoring:
             enabled: true
@@ -85,6 +85,12 @@ spec:
                   podSelector:
                     matchLabels:
                       language: node-js 
+                  ddTraceVersions:
+                    js: "default"
+                - name: "nodejs-16-projects"
+                  podSelector:
+                    matchLabels:
+                      language: node16
                   ddTraceVersions:
                     js: "4.55.0"
   syncPolicy:
