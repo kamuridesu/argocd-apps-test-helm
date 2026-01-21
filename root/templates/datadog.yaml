@@ -20,6 +20,8 @@ spec:
           image:
             tagSuffix: jmx # enable jmx metrics for kafka, cassandra, tomcat, etc
 
+        remoteConfiguration:
+          enabled: true
         datadog:
           apiKeyExistingSecret: datadog-secret
           site: us5.datadoghq.com
@@ -42,8 +44,7 @@ spec:
           containerImageCollection:
             enabled: true
 
-          remoteConfiguration:
-            enabled: true
+          
 
           kubelet:
             tlsVerify: false
