@@ -1,10 +1,11 @@
 enabled: true
 replicas: 1
-version: 6a844878e111a2ad5f45f495f5f7e6c915d03de5fde46e8ac9e1cd403435912b
+version: 0.10.1
 environment: prod
 language: go
 image:
   repository: codeberg.org/emersion/soju@sha256
+  tag: 6a844878e111a2ad5f45f495f5f7e6c915d03de5fde46e8ac9e1cd403435912b
 service:
   type: NodePort
   port: 6667
