@@ -1,0 +1,36 @@
+enabled: true
+replicas: 1
+version: 6a844878e111a2ad5f45f495f5f7e6c915d03de5fde46e8ac9e1cd403435912b
+environment: prod
+language: go
+image:
+  repository: codeberg.org/emersion/soju@sha256
+service:
+  type: NodePort
+  port: 6667
+  nodePort: 30667
+
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 0.05
+    memory: 100Mi
+
+volumeMounts:
+  - mountPath: /etc/soju/config
+    subPath: config
+    name: soju-config
+
+  - mountPath: /run/soju
+    name: soju-run
+
+volumes:
+  - name: soju-config
+    secret:
+      secretName: soju-config
+  - name: soju-run
+    emptyDir: {}
