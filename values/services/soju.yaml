@@ -29,9 +29,16 @@ volumeMounts:
   - mountPath: /run/soju
     name: soju-run
 
+  - mountPath: /etc/soju/certs
+    name: soju-certs
+    readOnly: true
+
 volumes:
   - name: soju-config
     secret:
       secretName: soju-config
   - name: soju-run
     emptyDir: {}
+  - name: soju-certs
+    secret:
+      secretName: soju-internal-tls-secret

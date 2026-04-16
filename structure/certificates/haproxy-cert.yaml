@@ -9,6 +9,7 @@ spec:
   renewBefore: 720h
   commonName: "*.kamuridesu.com"
   dnsNames:
+    - "kamuridesu.com"
     - "*.kamuridesu.com"
     - "*.local"
     - ".k3s-internal.local"

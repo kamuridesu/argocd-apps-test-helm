@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: soju-internal-tls
+  namespace: services
+spec:
+  secretName: soju-internal-tls-secret
+  duration: 8760h
+  renewBefore: 720h
+  commonName: "kamuridesu.com"
+  dnsNames:
+    - "kamuridesu.com"
+    - "soju.local"
+  issuerRef:
+    name: internal-ca-issuer
+    kind: ClusterIssuer
