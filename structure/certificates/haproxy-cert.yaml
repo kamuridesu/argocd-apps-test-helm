@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: k3s-internal-tls
+  namespace: haproxy
+spec:
+  secretName: k3s-internal-tls-secret
+  duration: 8760h
+  renewBefore: 720h
+  commonName: "*.kamuridesu.com"
+  dnsNames:
+    - "*.kamuridesu.com"
+    - "*.local"
+    - ".k3s-internal.local"
+    - "*.svc.cluster.local"
+  issuerRef:
+    name: internal-ca-issuer
+    kind: ClusterIssuer
