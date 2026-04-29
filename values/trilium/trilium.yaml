@@ -1,7 +1,7 @@
 enabled: true
 image:
   repository: triliumnext/trilium
-version: "v0.96.0"
+version: "v0.102.2"
 replicas: 1
 language: node-js
 environment: prod
