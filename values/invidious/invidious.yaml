@@ -1,7 +1,7 @@
 enabled: true
 environment: prod
 replicas: 1
-version: "2025.12.15-cf52a35-arm64"
+version: "2026.04.28-afea61b-arm64"
 image:
   repository: quay.io/invidious/invidious
 envFrom:
