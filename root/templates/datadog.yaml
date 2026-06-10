@@ -12,7 +12,7 @@ spec:
   project: tooling
   source:
     repoURL: https://helm.datadoghq.com
-    targetRevision: "3.161.1"
+    targetRevision: "3.222.0"
     chart: datadog
     helm:
       values: |
@@ -43,8 +43,6 @@ spec:
 
           containerImageCollection:
             enabled: true
-
-          
 
           kubelet:
             tlsVerify: false
