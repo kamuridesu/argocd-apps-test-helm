@@ -1,6 +1,6 @@
 enabled: false
 version: "0.6"
-replicas: 1
+replicas: 0
 language: "node-js"
 environment: prod
 image:
@@ -8,7 +8,7 @@ image:
 
 monitoring:
   datadog:
-    enabled: true
+    enabled: false
 
 service:
   port: 8080
