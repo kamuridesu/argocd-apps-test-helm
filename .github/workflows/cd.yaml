@@ -5,16 +5,16 @@ on:
     types:
       - update-version
 
-permissions:
-  contents: write
-
 jobs:
   update:
-    name: "Update image version"
+    name: "Update image version in Forgejo"
     runs-on: ubuntu-22.04
+    environment: forgejo-sync
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Update version in values file
         run: |
@@ -23,11 +23,22 @@ jobs:
           IMAGE_NAME="${{ github.event.client_payload.image_name }}"
 
           sed -i "s/^version:.*/version: \"${VERSION}\"/" "${FILE_PATH}"
-
           echo "Updated ${FILE_PATH} to version ${VERSION}"
 
-          git config --global user.name "Github ACtions"
-          git config --global user.email github-actions@github.com
+          git config --global user.name "Github Actions"
+          git config --global user.email "github-actions@github.com"
 
           git commit -am "feat: update ${IMAGE_NAME} to ${VERSION}"
-          git push
+
+      - name: Push commit to Forgejo
+        env:
+          FORGEJO_EXTERNAL_URL: ${{ secrets.FORGEJO_EXTERNAL_URL }}
+          FORGEJO_USER: ${{ secrets.FORGEJO_USER }}
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+        run: |
+          CLEAN_HOST="${FORGEJO_EXTERNAL_URL#*://}"
+          PROTOCOL="${FORGEJO_EXTERNAL_URL%%://*}"
+
+          FORGEJO_REPO="${{ github.repository }}.git"
+
+          git push "$PROTOCOL://$FORGEJO_USER:$FORGEJO_TOKEN@$CLEAN_HOST/$FORGEJO_REPO" HEAD:main
