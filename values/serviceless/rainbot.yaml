@@ -1,7 +1,7 @@
 enabled: true
 image:
   repository: ghcr.io/kamuridesu/rainbot
-version: "0.12"
+version: "0.12.2"
 replicas: 1
 language: go
 environment: prod
