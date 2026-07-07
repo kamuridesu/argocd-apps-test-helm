@@ -14,10 +14,27 @@ envFrom:
 env:
   - name: GOMAXPROCS
     value: "1"
-livenessProbe:
-  enabled: false
+
 readinessProbe:
-  enabled: false
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+livenessProbe:
+  enabled: true
+  probes:
+    httpGet:
+      path: /health
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 10
 
 resources:
   limits:
@@ -27,4 +44,4 @@ resources:
     memory: 0.3G
 
 service:
-  headless: true
+  headless: false
