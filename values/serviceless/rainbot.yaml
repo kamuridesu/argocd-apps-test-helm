@@ -7,7 +7,7 @@ language: go
 environment: prod
 monitoring:
   datadog:
-    enabled: false
+    enabled: true
 envFrom:
   - secretRef:
       name: serviceless-rainbot-secret
