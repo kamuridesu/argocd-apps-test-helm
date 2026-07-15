@@ -13,6 +13,8 @@ metadata:
   namespace: cert-manager
 spec:
   isCA: true
+  duration: 87600h
+  renewBefore: 720h
   commonName: Kamuservices Internal CA
   secretName: kamuservices-internal-ca-secret
   privateKey:
