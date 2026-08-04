@@ -60,7 +60,8 @@ spec:
             containerCollectAll: true
             containerCollectUsingFiles: true
             enabled: true
-          networkingMonitoring:
+         
+          networkMonitoring:
             enabled: true
 
           apm:
