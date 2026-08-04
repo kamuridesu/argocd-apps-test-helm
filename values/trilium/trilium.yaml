@@ -44,7 +44,7 @@ volumeClaimTemplates: # This tells the chart to generate a StatefulSet
       name: trilium-data
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: standard
+      storageClassName: local-storage
       resources:
         requests:
           storage: 1Gi
@@ -57,9 +57,18 @@ persistentVolume:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  storageClassName: standard
-  hostPath:
+  storageClassName: local-storage
+  persistentVolumeReclaimPolicy: Retain
+  local:
     path: /trilium-data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k3s-node
 
 ingress:
   enabled: true
