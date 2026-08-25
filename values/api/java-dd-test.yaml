@@ -61,10 +61,11 @@ livenessProbe:
     timeoutSeconds: 5
     failureThreshold: 10
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: api.kamuridesu.com
       paths:
         - path: /java-dd-test
-          pathType: PathPrefix
+          pathType: Prefix

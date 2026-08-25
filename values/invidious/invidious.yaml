@@ -32,10 +32,11 @@ readinessProbe:
     timeoutSeconds: 5
     failureThreshold: 5
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: inv.kamuridesu.com
       paths:
         - path: /
-          pathType: PathPrefix
+          pathType: Prefix

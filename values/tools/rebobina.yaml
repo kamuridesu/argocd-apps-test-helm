@@ -37,10 +37,11 @@ resources:
 service:
   port: 80
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: tools.kamuridesu.com
       paths:
         - path: /rebobina
-          pathType: PathPrefix
+          pathType: Prefix

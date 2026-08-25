@@ -62,10 +62,11 @@ livenessProbe:
     timeoutSeconds: 5
     failureThreshold: 10
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: api.kamuridesu.com
       paths:
         - path: /nodejs/api
-          pathType: PathPrefix
+          pathType: Prefix

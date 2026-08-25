@@ -39,10 +39,11 @@ resources:
     memory: 1G
     cpu: "0.5"
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: keycloak.kamuridesu.com
       paths:
         - path: /
-          pathType: PathPrefix
+          pathType: Prefix

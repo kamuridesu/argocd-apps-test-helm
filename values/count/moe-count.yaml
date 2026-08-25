@@ -44,10 +44,11 @@ livenessProbe:
 service:
   port: 8080
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: count.kamuridesu.com
       paths:
         - path: /
-          pathType: PathPrefix
+          pathType: Prefix

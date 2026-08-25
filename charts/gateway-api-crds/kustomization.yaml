@@ -1,9 +1,0 @@
-# Gateway API CRDs, pulled straight from the upstream release tag via Kustomize's remote-resource
-# support (Argo CD renders this with its built-in Kustomize plugin, no chart needed for plain
-# CRDs). Keep this version in sync with `gateway_api_version` in
-# ansible-oracle-k3s/roles/master/defaults/main.yml - that's what bootstrap-installs the same CRDs
-# before ArgoCD exists to adopt them.
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-  - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/standard-install.yaml

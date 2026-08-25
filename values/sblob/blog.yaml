@@ -35,10 +35,11 @@ resources:
 service:
   port: 80
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: kamuridesu.com
       paths:
         - path: /
-          pathType: PathPrefix
+          pathType: Prefix

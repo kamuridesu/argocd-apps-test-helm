@@ -32,10 +32,11 @@ readinessProbe:
     timeoutSeconds: 5
     failureThreshold: 2
 
-route:
+ingress:
   enabled: true
+  className: haproxy
   hosts:
     - host: cobalt.kamuridesu.com
       paths:
         - path: /
-          pathType: PathPrefix
+          pathType: Prefix

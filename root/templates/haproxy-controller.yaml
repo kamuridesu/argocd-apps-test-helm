@@ -1,24 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gateway-api-crds
+  name: haproxy
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-2"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
-  project: platform
+    namespace: haproxy
+  project: default
   source:
     repoURL: https://github.com/kamuridesu/argocd-apps-test-helm.git
-    path: charts/gateway-api-crds
+    path: charts/haproxy
     targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - ServerSideApply=true
+        - CreateNamespace=true
