@@ -6,6 +6,10 @@ replicas: 1
 language: node-js
 environment: prod
 
+envFrom:
+  - secretRef:
+      name: trilium-config
+
 livenessProbe:
   enabled: true
   probes:
