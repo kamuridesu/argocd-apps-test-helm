@@ -17,7 +17,7 @@ spec:
       finalizers:
         - resource-finalizer.argocd.argoproj.io
     spec:
-      project: default
+      project: workloads
       sources:
         - repoURL: https://github.com/kamuridesu/kamuchart.git
           path: kamuchart

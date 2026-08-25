@@ -1,0 +1,56 @@
+# Every app deployed from values/ via kamuchart. Destination namespaces are the fixed set that
+# structure/apps/apps.yaml's ApplicationSet actually generates (one per values/ subdirectory) -
+# adding a new values/<group>/ subdirectory means adding its namespace here too; that's a
+# deliberate speed bump, not an oversight. Resource kinds are limited to what kamuchart can
+# actually render, so a workload app can never touch RBAC, webhooks, or other cluster-scoped
+# machinery even by mistake.
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: workloads
+  namespace: argocd
+spec:
+  sourceRepos:
+    - https://github.com/kamuridesu/argocd-apps-test-helm.git
+    - https://github.com/kamuridesu/kamuchart.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: api
+    - server: https://kubernetes.default.svc
+      namespace: cobalt
+    - server: https://kubernetes.default.svc
+      namespace: count
+    - server: https://kubernetes.default.svc
+      namespace: invidious
+    - server: https://kubernetes.default.svc
+      namespace: keycloak
+    - server: https://kubernetes.default.svc
+      namespace: sblob
+    - server: https://kubernetes.default.svc
+      namespace: serviceless
+    - server: https://kubernetes.default.svc
+      namespace: services
+    - server: https://kubernetes.default.svc
+      namespace: tools
+    - server: https://kubernetes.default.svc
+      namespace: trilium
+  clusterResourceWhitelist:
+    - group: ""
+      kind: PersistentVolume
+  namespaceResourceWhitelist:
+    - group: ""
+      kind: ServiceAccount
+    - group: ""
+      kind: Service
+    - group: ""
+      kind: Pod
+    - group: ""
+      kind: PersistentVolumeClaim
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: StatefulSet
+    - group: autoscaling
+      kind: HorizontalPodAutoscaler
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute

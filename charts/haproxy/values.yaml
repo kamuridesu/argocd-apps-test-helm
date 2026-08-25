@@ -1,4 +1,0 @@
-kubernetes-ingress:
-  controller:
-    extraArgs:
-      - --default-ssl-certificate=haproxy/k3s-internal-tls-secret

@@ -8,7 +8,13 @@ The `apps` folder contains the default manifest which is an entrypoint to manage
 
 On the `root` we have some Applications pointing to the configs to be applied.
 
-The `structure` folder stores some management files for ArgoCD like groups and ApplicationSets.
+The `structure` folder stores some management files for ArgoCD like groups (AppProjects) and
+ApplicationSets - everything under it is swept up automatically by the `argocd-structure`
+ApplicationSet (`root/templates/projects.yaml`), one Application per subdirectory.
+
+The `manifests` folder holds plain Kubernetes manifests that need a *dedicated* Application
+(custom destination namespace, sync-wave, etc.) rather than being generically swept up like
+`structure/` - currently just the shared Gateway API `Gateway` resource.
 
 On `values` I put my values files for my Helm Chart. It's structured like: `values/namespace/app.yaml`, where namespace will be the namespace for the project and app will be the base name.
 

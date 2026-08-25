@@ -39,11 +39,10 @@ livenessProbe:
     periodSeconds: 30
     timeoutSeconds: 5
     failureThreshold: 10
-ingress:
+route:
   enabled: true
-  className: haproxy
   hosts:
     - host: api.kamuridesu.com
       paths:
         - path: /ytdl
-          pathType: Prefix
+          pathType: PathPrefix

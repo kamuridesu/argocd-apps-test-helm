@@ -70,11 +70,10 @@ persistentVolume:
               values:
                 - k3s-node
 
-ingress:
+route:
   enabled: true
-  className: haproxy
   hosts:
     - host: notes.kamuridesu.com
       paths:
         - path: /
-          pathType: Prefix
+          pathType: PathPrefix

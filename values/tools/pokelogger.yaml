@@ -55,11 +55,10 @@ livenessProbe:
     timeoutSeconds: 5
     failureThreshold: 10
 
-ingress:
+route:
   enabled: true
-  className: haproxy
   hosts:
     - host: tools.kamuridesu.com
       paths:
         - path: /pokelogger
-          pathType: Prefix
+          pathType: PathPrefix
