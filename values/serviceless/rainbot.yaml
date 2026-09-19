@@ -45,3 +45,30 @@ resources:
 
 service:
   headless: false
+
+extraContainers:
+  - name: wg-gateway
+    image: alpine:3.20
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        set -e
+        apk add --no-cache wireguard-tools
+        wg-quick up /etc/wireguard/wg0.conf
+        while true; do
+          sleep 30
+          wg show wg0 > /dev/null 2>&1 || wg-quick up /etc/wireguard/wg0.conf
+        done
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN"]
+    volumeMounts:
+      - name: wg-config
+        mountPath: /etc/wireguard
+        readOnly: true
+
+volumes:
+  - name: wg-config
+    secret:
+      secretName: serviceless-rainbot-wg-secret
+      defaultMode: 0400
